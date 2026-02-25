@@ -141,7 +141,7 @@ export default function Auth() {
             Simple Financial Tracking for Hospitality
           </h1>
           <p className="text-lg text-primary-foreground/80 max-w-md">
-            Track expenses, sales, and profits with ease. Built for small hotels
+            Track expenses, sales and profits with ease. Built for small hotels
             and restaurants who need clear financial visibility without
             complexity.
           </p>
