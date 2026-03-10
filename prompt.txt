@@ -1,0 +1,364 @@
+🧾 Project Title
+
+Simple Expense & Profit Tracker SaaS for Small Hotels & Restaurants
+
+🌍 Project Overview
+
+Build a production-ready SaaS web application that enables small hotels and restaurants to easily track:
+
+Daily expenses
+
+Daily sales
+
+Cash vs Bank balances
+
+Automatically generated Profit & Loss (P&L) reports
+
+The system must be simple, fast, mobile-friendly, and built for non-technical business owners who need clear financial visibility without accounting complexity.
+
+This must be a real working SaaS, not a UI mockup.
+
+🎯 Core Objectives
+
+Accurate daily financial tracking
+
+Clear separation of Cash vs Bank transactions
+
+Real-time balance updates
+
+Automatic Profit & Loss calculations
+
+Clean dashboards and visual reports
+
+Secure multi-tenant SaaS architecture
+
+Scalable backend structure for future growth
+
+🧱 Mandatory Tech Stack
+Layer	Technology
+Frontend	React (Next.js App Router and tailwind CSS)
+Backend	Node.js + Express.js
+Database	PostgreSQL (Preferred) or MongoDB
+ORM	Sequelize (Postgres) or Mongoose (MongoDB)
+Authentication	JWT (Access + Refresh token flow)
+UI Styling	Tailwind CSS
+Charts	Recharts or Chart.js
+Payments	Stripe (for SaaS subscription billing)
+🧩 Core Features & Functional Requirements
+1️⃣ Authentication & Business Setup
+
+User Registration & Login
+
+JWT-based authentication
+
+Password hashing using bcrypt
+
+Each user belongs to one business
+
+Business types: HOTEL or RESTAURANT
+
+Single role for MVP: OWNER
+
+Middleware to protect all business routes
+
+Multi-tenant isolation (users only access their own business data)
+
+2️⃣ Daily Expense Management
+
+Users can:
+
+Add daily expenses with:
+
+Date
+
+Category: Food, Staff, Electricity, Rent, Maintenance, Other
+
+Amount
+
+Payment Method: CASH or BANK
+
+Optional notes
+
+Edit and delete expenses
+
+Filter by:
+
+Date range
+
+Category
+
+Payment method
+
+👉 When an expense is added:
+
+Deduct from Cash balance if CASH
+
+Deduct from Bank balance if BANK
+
+3️⃣ Sales Management
+
+Users can:
+
+Add daily sales entries:
+
+Date
+
+Amount
+
+Payment Method: CASH or BANK
+
+Allow multiple entries per day
+
+Auto-calculate total daily sales
+
+👉 When a sale is added:
+
+Increase Cash balance if CASH
+
+Increase Bank balance if BANK
+
+4️⃣ Cash vs Bank Balance Tracking
+
+System must maintain real-time running balances:
+
+Cash Balance
+
+Bank Balance
+
+Rules:
+
+Balances auto-update after every sale or expense
+
+Prevent negative cash balance (validation error)
+
+Show balances clearly on dashboard
+
+5️⃣ Profit & Loss (P&L) Reporting
+
+Auto-generated financial report including:
+
+Total Sales
+
+Total Expenses
+
+Net Profit / Loss
+
+Filters:
+
+Today
+
+This Week
+
+This Month
+
+Custom Date Range
+
+Visualizations:
+
+Sales vs Expenses (Bar/Line chart)
+
+Expense category breakdown (Pie chart)
+
+Cash vs Bank distribution
+
+💳 6️⃣ Stripe Subscription Billing (SaaS Feature)
+
+Integrate Stripe Checkout for subscriptions
+
+Plans:
+
+Free Trial (optional)
+
+Basic Monthly Plan
+
+Features:
+
+Only active subscribers can access dashboard
+
+Webhook to update subscription status
+
+Middleware to restrict access for inactive users
+
+🗂 Database Schema (Required)
+User
+
+id
+
+name
+
+email (unique)
+
+password_hash
+
+business_id
+
+created_at
+
+Business
+
+id
+
+name
+
+type (HOTEL | RESTAURANT)
+
+stripe_customer_id
+
+subscription_status
+
+created_at
+
+Expense
+
+id
+
+business_id
+
+date
+
+category
+
+amount
+
+payment_method (CASH | BANK)
+
+notes
+
+created_at
+
+Sale
+
+id
+
+business_id
+
+date
+
+amount
+
+payment_method (CASH | BANK)
+
+created_at
+
+🔌 API Endpoints (REST)
+Auth
+
+POST /api/auth/register
+
+POST /api/auth/login
+
+GET /api/auth/me
+
+Expenses
+
+POST /api/expenses
+
+GET /api/expenses
+
+PUT /api/expenses/:id
+
+DELETE /api/expenses/:id
+
+Sales
+
+POST /api/sales
+
+GET /api/sales
+
+Reports
+
+GET /api/reports/pnl
+
+GET /api/reports/cash-bank-summary
+
+Billing
+
+POST /api/billing/create-checkout-session
+
+POST /api/billing/webhook
+
+🖥 Frontend Pages (Required)
+
+Login / Register
+
+Dashboard
+
+Today’s Sales
+
+Today’s Expenses
+
+Cash Balance
+
+Bank Balance
+
+Charts
+
+Expenses Page
+
+Sales Page
+
+P&L Reports Page
+
+Subscription / Billing Page
+
+⚙️ Non-Functional Requirements
+
+Clean folder structure
+
+controllers / routes / services / models / middleware
+
+Environment-based configuration (.env)
+
+Central error handling middleware
+
+Input validation (Joi/Zod/Express-validator)
+
+Responsive mobile-first UI
+
+Loading states & error toasts
+
+Meaningful code comments
+
+Seed data for testing/demo
+
+Pagination for lists
+
+Secure headers (helmet)
+
+CORS configuration
+
+🚀 Output Expectations
+
+Lovable AI must generate:
+
+✅ Complete frontend source code
+✅ Complete backend source code
+✅ Database models & migrations
+✅ Stripe integration
+✅ Sample .env.example
+✅ README with setup steps
+✅ API integrated with frontend (NO mock data)
+
+🧠 Design Philosophy
+
+Keep UX extremely simple
+
+Optimized for daily quick usage
+
+Avoid accounting jargon
+
+Clean, maintainable, scalable code
+
+Built so future features like:
+
+Inventory
+
+Staff payroll
+
+Multi-branch
+can be added later
+
+❗ Final Instruction to Code Generator
+
+Do NOT generate static UI or mock APIs.
+Generate a fully working full-stack SaaS application with real database persistence and API integration.
